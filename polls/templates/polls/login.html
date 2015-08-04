@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+<html>
+<head>
+    <title>PhotoShare</title>
+</head>
+{% block body_block %}
+    <h1>Login to PhotoShare</h1>
+    <form class="form-signin span4" id="login_form" method="post" action="/login/">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        {% csrf_token %}
+
+        {% if bad_details %}
+            <p><strong>Your username and/or password were incorrect!</strong></p>
+        {% elif disabled_account %}
+            <p><strong>Your PhotoShare account is currently disabled; we can't log you in!</strong></p>
+        {% endif %}
+
+        Username: <input type="text" class="form-control" placeholder="Username" name="username" id="id_username"/>
+        <br/>
+        Password: <input type="password" class="form-control" placeholder="Password" name="password"
+                         id="id_password"/>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a class="btn btn-lg btn-warning btn-block" href="/register/" role="button">Go To Register</a>
+    </form>
+{% endblock %}
+</html>

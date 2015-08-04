@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+	    {% load staticfiles %}
+	    <link href="{% static 'css/main.css' %}" rel='stylesheet'/>
+        <title>Polls - {% block title %}Base.html{% endblock %}</title>
+
+    <divclass="nav" >
+	<div class="container">
+            <ul class="pull-left">
+            {% if user.is_authenticated %}
+		<a href="/polls/core_profile/">Profile</a>&nbsp&nbsp&nbsp
+                <a href="/polls/restricted/">Restricted Page</a>&nbsp&nbsp&nbsp
+		<a href="/polls/list/">List</a> &nbsp&nbsp&nbsp
+		<a href="/polls/logout/">Logout</a>&nbsp&nbsp&nbsp
+		<!--<div id="cats">
+		       {% if cat_list %}
+			   <ul class="nav nav-list"><li>Category List</li></ul>
+			   {% include 'polls/category_list.html' with cat_list=cat_list %}
+		       {% endif %}
+		</div>-->
+	    </ul>
+	    <ul class="pull-right">
+                <a href="/polls/add_category/">Add a New Category</a>&nbsp&nbsp&nbsp
+	    </ul>
+            {% else %}
+	    <ul class="pull-left">
+                <a href="/polls/register/">Register Here</a>&nbsp&nbsp&nbsp
+                <a href="/polls/login/">Login</a>&nbsp&nbsp&nbsp
+	    </ul>
+            {% endif %}
+  	    <ul class="pull-right">
+                <a href="/polls/about/">About</a>&nbsp&nbsp&nbsp
+            </ul>
+        </div>
+ </head>     
+	<div>
+            {% block body_block %}{% endblock %}
+        </div>
+    <hr />
+</html>
+

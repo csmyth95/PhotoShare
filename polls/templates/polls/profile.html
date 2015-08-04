@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body_block %}
+    <div class="container">
+        <h1> Profile </h1>
+
+        <h2><i>{{ user.username }}</i></h2>
+
+        {% if userprofile %}
+            {% if userprofile.picture %}
+
+                    <img class="img-rounded" src="{{ userprofile.picture.url_125x125 }}"/>
+
+            {% endif %}
+        {% endif %}
+        <p>Email: {{ user.email }}</p>
+
+        <div id="cats">
+            {% if cat_list %}
+                <ul class="nav nav-list">
+                    <li><u><strong>Album List</strong></u></li>
+                </ul>
+                {% include 'polls/category_list.html' with cat_list=cat_list %}
+            {% endif %}
+        </div>
+
+    <div>
+            {% if image_list %}
+                <div class="row">
+                <h1>User's Images</h1>
+                {% for image in image_list %}
+                    <div class="col-xs-2">
+
+                        <a href="/goto/{{ image.id }}"><img class="img-thumbnail" src="{{ image.image.url_125x125 }}"/></a>
+
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+

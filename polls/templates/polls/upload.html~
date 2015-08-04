@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+<html>
+	<head>
+		<title>Polls</title>
+	</head>
+{% block body_block %}
+	<h1>Upload to PhotoShare</h1>
+    	    <form id="upload_file" action="/polls/upload/" method="post" enctype="multipart/form-data">
+	        {% csrf_token %}
+                <p>
+                    <input id="id_image" type="file" class="" name="image">
+                </p>
+                <input type="submit" value="Submit" />
+            </form>
+{% endblock %}
+</html>

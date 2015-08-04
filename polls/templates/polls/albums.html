@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Albums{% endblock %}
+
+{% block body_block%}
+    <div class="container">
+    <a class="btn-default btn-lg btn" href="/add_album/" role="button">Add an album!</a>
+
+    {% for album in albums%}
+
+        <ul>
+        <a href="/album/{{ album.url }}"><h1>{{ album.name }}</h1></a>
+
+        {% if images %}<div class="row">
+            {% for image in images %}
+                {% if image.category == album %}
+                    <div class="col-xs-2">
+
+                        <a href="/goto/{{ image.id }}"><img class="img-thumbnail" src="{{ image.image.url_125x125 }}"/></a>
+
+                    </div>
+                {% endif %}
+            {% endfor %}</div>
+        {% endif %}
+        </ul>
+    {% endfor %}
+</div>
+{% endblock %}

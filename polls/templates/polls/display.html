@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+    <div class="container">
+        <h1>{{ image.title }}</h1>
+
+            <a href="{{ image.image.url }}"><img class="img-rounded" src="{{ image.image.url_500x500 }}"/></a>
+
+        <p>Click for full size<br></p>
+        <p>Uploaded by user: <a href="/profile/{{ image.user.id }}">{{ image.user }}</a></p>
+        <p>In album: <a href="/album/{{ caturl }}">{{ image.category.name }}</a></p>
+        <p>{{ image.views }} views</p>
+    </div>
+{% endblock %}

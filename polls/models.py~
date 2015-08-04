@@ -1,0 +1,83 @@
+from django.db import models
+from datetime import datetime
+from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
+from stream_django.activity import Activity
+from stream_django.feed_manager import feed_manager
+from django.db.models.signals import post_delete, post_save
+from django.conf import settings
+
+#ExampleModel from coderwall.com/YOUTUBE VIDEO
+class ImageModel(models.Model):
+    model_pic = models.ImageField(upload_to = 'media/images', default = 'media/images/None/no-img.jpg')
+
+class Image(models.Model):
+	user = models.ForeignKey(User, related_name='Images')
+	title = models.CharField(max_length=128)
+	image = models.ImageField(upload_to='media/images', default = 'media/images/None/no-img.jpg')
+
+#TWD for categories
+class Category(models.Model):
+	name = models.CharField(max_length=128, unique=True)
+	views = models.IntegerField(default=0)
+	likes = models.IntegerField(default=0)
+	
+	def __unicode__(self):
+		return self.name
+
+class Page(models.Model):
+	category = models.ForeignKey(Category)
+	title = models.CharField(max_length=128)
+	url = models.URLField()
+	views = models.IntegerField(default=0)
+	
+	def __unicode__(self):
+		return self.title
+
+#Polls Models
+class Question(models.Model):
+	question_text = models.CharField(max_length=200)
+	pub_date = models.DateTimeField('date published')
+	def __str__(self):
+		return self.question_text
+	def was_published_recently(self):
+                now = timezone.now()
+		return now - datetime.timedelta(days=1) <= self.pub_date <= now
+	was_published_recently.admin_order_field = 'pub_date'
+	was_published_recently.boolean = True
+	was_published_recently.short_description = 'Published recently?'
+	
+class Choice(models.Model):
+	question = models.ForeignKey(Question)
+	choice_text = models.CharField(max_length=200)
+	votes = models.IntegerField(default=0)
+	def __str__(self):
+		return self.choice_text
+
+
+#User Authentication
+class UserProfile(models.Model):
+	# A required line - links a UserProfile to User.
+	user = models.OneToOneField(User)
+	
+	# The additional attributes we wish to include.
+	picture = models.ImageField(upload_to='profile_images', blank=True)
+	
+	def __unicode__(self):
+		return self.user.username
+
+#NOT FOR SITEMAP ANYMORE
+#new model for sitemap
+class Entry(models.Model):
+	def get_absolute_url(self):
+		return '/%s/' % self.name
+
+
+#Photo upload StackOverFlow
+class Document(models.Model):
+	docfile = models.FileField(upload_to='documents/%Y/%m/%d')
+
+
+
+

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Register with PhotoShare{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+    <h1>Register with PhotoShare</h1>
+    <br/>
+
+    <div class="container">
+        {% if registered %}
+        <p> Thank you for registering.
+
+        <p><a href="/polls/login/">Login</a> 
+        {% else %}
+
+        <form class="form-signin span8" id="user_form" method="post" action="/polls/register/"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Sign up Here</h2>
+            <!-- Display each form here -->
+
+            {% for field in user_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text}}<br/>
+            {{ field }}<br/>
+            {% endfor %}
+
+
+            {% for field in profile_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text}}<br/>
+            {{ field }}<br/>
+            {% endfor %}
+
+            <br/>
+            <!-- Provide a button to click to submit the form. -->
+            <input class="btn btn-primary" type="submit" name="submit" value="Register"/>
+        </form>
+        {% endif %}
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+         {% load staticfiles %}
+    	 <script src="{% static 'js/app.js' %}"></script>
+	 <script src="{% static 'js/bootstrap.js' %}"></script>
+{% endblock %}
+		
+	 

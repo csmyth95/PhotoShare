@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400;300' rel='stylesheet' type='text/css'>
+    {% load staticfiles %}
+    <link href="{% static 'css/style.css' %}" rel='stylesheet'/>
+    <link href="{% static 'css/main.css' %}" rel='stylesheet'/>
+  </head>
+  <body>
+    <div class="menu">
+      <!-- Menu icon -->
+      <div class="icon-close">
+        <img src="http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/close.png">
+      </div>
+      <!-- Menu -->
+     <ul>
+        <li class="home">
+		
+			{% if user.is_authenticated %}
+			<a href="home">Home</a></li>
+			    <li class="galleries dropdown">
+					<a data-target="#" href="" class="dropdown-toggle" data-toggle="dropdown">
+			            Gallery views<b class="caret"></b>
+			        </a>
+					<ul class="dropdown-menu">
+						<li class="sub-page"><a href="{% url 'photologue:pl-gallery-archive' %}">Date views</a></li>
+						<li class="sub-page"><a href="{% url 'photologue:gallery-list' %}">List views</a></li>
+					</ul>
+				</li>
+			    <li class="photos dropdown">
+					<a data-target="#" href="" class="dropdown-toggle" data-toggle="dropdown">
+			            Photo views<b class="caret"></b>
+			        </a>
+					<ul class="dropdown-menu">
+						<li class="sub-page"><a href="{% url 'photologue:pl-photo-archive' %}">Date views</a></li>
+						<li class="sub-page"><a href="{% url 'photologue:photo-list' %}">List views</a></li>
+					</ul>
+				</li>
+				<li class="profile dropdown">
+					<a data-target="#" href="{% url 'profile' slug=user.username%}" class="dropdown-toggle" data-toggle="dropdown">
+			            Profile<b class="caret"></b>
+			                </a>
+				</li>
+			{% else %}
+			<li class="photos dropdown">
+					<a data-target="#" href="{% url 'register' %}" class="dropdown-toggle" data-toggle="dropdown">
+			            Register Here<b class="caret"></b>
+			                </a>
+				</li>
+			<li class="photos dropdown">
+					<a data-target="#" href="{% url 'login' %}" class="dropdown-toggle" data-toggle="dropdown">
+			            Login<b class="caret"></b>
+			                </a>
+				</li>
+			{% endif %}
+				<li class="photos dropdown">
+					<a data-target="#" href="home" class="dropdown-toggle" data-toggle="dropdown">
+			            About<b class="caret"></b>
+			                </a>
+				</li>
+				
+    </div>
+    <!-- Main body -->
+    <div class="jumbotron">
+      <div class="icon-menu">
+        <i class="fa fa-bars"></i>
+        PhotoSharingApp
+      </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    {% load staticfiles %}
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>

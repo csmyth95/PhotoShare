@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html>
+
+
+
+  <head>
+
+    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+
+    
+
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+
+    <link rel="stylesheet" href="main.css">
+
+    
+
+  </head>
+
+
+
+  <body>
+
+    <div class="nav">
+
+      <div class="container">
+
+        <ul class="pull-left">
+
+          <li><a href="http://ie.playstation.com/">Sony</a></li>
+
+          <li><a href="http://www.xbox.com/en-ie/#fbid=1tBuLVm83YZ">Microsoft</a></li>
+
+          <li><a href="http://www.nintendo.com/">Nintendo</a></li>
+
+        </ul>
+
+        <ul class="pull-right">
+
+          <li><a href="http://www.gametrailers.com/">Games</a></li>
+
+          <li><a href="http://www.e3expo.com/">E3</a></li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="jumbotron">
+
+      <div class="container">
+
+        <h1>Example base.html is needed...</h1>
+
+        <p>Check out all the news, trailers and announcements from the electronic entertainment expo in los Angeles from the 9th-13th of June.</p>
+
+        <a href="#">Learn More</a>
+
+      </div>
+
+    </div> 
+
+    
+
+    <div class="neighborhood-guides">
+
+        <div class="container">
+
+             <h2>E3</h2>
+
+            <p>Not sure what games events to go to this year? Look no further than sunny los angeles, California, specifically the Electronic Entertainment Expo! largest and most mainstream games convention in the world</p>
+
+                <div class="row">
+
+                
+
+  <!--col 1-->                  <div class="col-md-4">
+
+                        <div class="thumbnail">
+
+                            <img src="http://gamerone.ru/media/k2/items/cache/9aa91352e792f145830c61b99571c730_XL.jpg">
+
+                        </div>
+
+                        
+
+                        <div class="thumbnail">
+
+                            <img src="http://img2.wikia.nocookie.net/__cb20140610032750/uncharted/images/thumb/6/6f/Uncharted_4_A_Thief's_End_E3_2014_Trailer_(PS4)/600px-Uncharted_4_A_Thief's_End_E3_2014_Trailer_(PS4).jpg">
+
+                        </div>
+
+                    </div>
+
+                    
+
+  <!--col 2-->      <div class="col-md-4">
+
+                     <div class="thumbnail">
+
+                           <!-- <img src="http://cdn2.dualshockers.com/wp-content/uploads/2014/05/FC4-Cover.jpg?57efa4">-->
+
+                        </div>
+
+                    </div>
+
+                    
+
+  <!--col 3-->      <div class="col-md-4">
+
+                        <div class="thumbnail">
+
+                            <img src="http://cdn.gamerheadlines.com/wp-content/uploads/2014/03/AssassinsCreedUnity-720x404.jpg">
+
+                        </div>
+
+                        
+
+                        <div class="thumbnail">
+
+                            <img src="http://upload.wikimedia.org/wikipedia/en/archive/a/af/20140222143318!Super_Smash_Bros_4_merged_logo,_no_subtitle.png">
+
+                        </div> 
+
+                    </div> 
+
+                </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="learn-more">
+
+	  <div class="container">
+
+		<div class="row">
+
+	      <div class="col-md-4">
+
+			<h3>Sony</h3>
+
+			<p>See all the latest news from all the great software line up coming to playstation and sony products, which include: playstation now, playstation TV and many exclusive games coming to PS4 such as Tim Schafer's Grim fandango!</p>
+
+			<p><a href="http://blog.eu.playstation.com/e3/">Info from Sony at E3</a></p>
+
+	      </div>
+
+		  <div class="col-md-4">
+
+			<h3>Microsoft</h3>
+
+			<p>Indulge in the great software line up from microsoft with amazing first party titles such as Halo Guardians, Sunset Overdrive, Forza 2 and much more!</p>
+
+			<p><a href="http://www.xbox.com/en-GB/e3#fbid=1tBuLVm83YZ">Info from Microsoft at E3</a></p>
+
+		  </div>
+
+		  <div class="col-md-4">
+
+			<h3>Nintendo</h3>
+
+			<p>Look out for the new ways to play all your favourite Nintendo only titles such as Super Smash Bros. for Wii U and 3DS, Legend of Zelda, Yoshhi's Wooly World, Bayonetta 2 and much more. Check out the new disney infinity/ skylanders like figures for nintendo games only, Amiibo!</p>
+
+			<p><a href="http://e3.nintendo.com/">Info from Nintendo at E3</a></p>
+
+		  </div>
+
+	    </div>
+
+	  </div>
+
+	</div>
+
+  </body>
+
+</html>

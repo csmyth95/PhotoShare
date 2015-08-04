@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+    <h1>Choose an album to upload to!</h1>
+    <p><a class="btn-default btn-lg btn" href="/add_album/" role="button">Create a new Album!</a></p>
+    {% if albums %}
+        <ul>
+        {% for album in albums %}
+            <li><a href="/album/{{ album.url }}/add_image/">{{ album.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

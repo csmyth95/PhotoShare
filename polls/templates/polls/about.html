@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block body_block %}
+    <div class="hero-unit">
+        <h1>About PhotoShare</h1>
+        This is <strong>PhotoShare's about page</strong>.<br/>
+
+        You've visited the site on <strong>{{ visit_count }} occasion(s).</strong><br/>
+
+        Take photos of anything and upload them to PhotoShare!<br/>
+        <img src="{% static "hero-photos.jpg" %}" alt="Picture of Example"/>
+    </div>
+{% endblock %}

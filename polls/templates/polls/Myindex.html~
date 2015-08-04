@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+
+    <link rel="stylesheet" href="main.css">
+
+  </head>
+  <body>
+
+    <div class="nav">
+
+      <div class="container">
+
+        <ul class="pull-left">
+
+          <li><a href="/polls/register/">Register</a></li>
+
+        </ul>
+
+        <ul class="pull-right">
+
+          <li><a href="/polls/login">Login</a></li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="jumbotron">
+
+      <div class="container">
+	{% if user.is_authenticated %}
+	<h1>Hello {{ user.username }}!, enjoy our PhotoSharingApp</h1>
+	<div class="thumbnail">
+
+        	<img src="http://gamerone.ru/media/k2/items/cache/9aa91352e792f145830c61b99571c730_XL.jpg">
+
+        </div>
+	{% else %}
+	<h1>Polls says... Hello World!</h1>
+	{% endif %}
+      </div>
+    </div>
+  </body>
+</html>

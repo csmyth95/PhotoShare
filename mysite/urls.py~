@@ -1,0 +1,32 @@
+from django.conf.urls import * # patterns, include, url
+from django.contrib import admin
+#from django.contrib.sitemaps.views import sitemap
+#from photologue.sitemaps import GallerySitemap, PhotoSitemap
+from polls import views
+from photologue.views import GalleryListView
+
+#Photo upload
+from django.conf import settings
+from django.conf.urls.static import static
+
+#sitemaps collection
+#sitemaps = {
+        #'poll':PollSitemap
+	
+	#'photologue_galleries':GallerySitemap,
+	#'photologue_photos':PhotoSitemap,
+#}
+
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'mysite.views.home', name='home'),
+    # url(r'^blog/', include('blog.urls')),
+    url(r'^polls/', include('polls.urls', namespace="polls")),	
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^photologue/', include('photologue.urls', namespace='photologue')),
+    #url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}),
+    url(r'^home', 'polls.views.home', name='home'),#home
+    #url(r'^gallerylist/$', GalleryListView.as_view(paginate_by=5), name='photologue_custom-gallery-list'),
+    url(r'^', include('polls.urls')),
+    #url(r'^list/$', views.list, name='list'),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

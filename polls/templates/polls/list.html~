@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+<html>
+    {% block body_block %}
+	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+	{% load staticfiles %}
+	    <!--<link href="{% static 'css/main.css' %}" rel='stylesheet'/>-->
+    <h1>List of all uploaded Documents</h1>
+    <!-- List of uploaded documents -->
+    {% if documents %}
+        <ul>
+        {% for document in documents %}
+            <!--<a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a><br>-->
+	<img src="{{ document.docfile.url }}" height=200 width=250 border="1"/>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No documents.</p>
+    {% endif %}
+
+        <!-- Upload form. Note enctype attribute! -->
+<h2>Upload an Image to PhotoShare</h2>
+        <form action="{% url 'list' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+            <p><input id="input-1" type="submit" value="Upload" /></p>
+	<!--<input id="input-1" type="file" class="file">-->
+        </form>
+    {% endblock %}
+</html> 

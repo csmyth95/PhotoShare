@@ -1,0 +1,53 @@
+from django.contrib import admin
+from polls.models import Choice, Question, UserProfile, Category, Page
+from core import models as pinterest_models
+from core.utils.admin import auto_register
+
+admin.site.register(Category)
+admin.site.register(Page)
+
+class ChoiceInline(admin.TabularInline):
+	model = Choice
+	extra = 3
+
+class QuestionAdmin(admin.ModelAdmin):
+	fieldsets = [
+		(None,		     {'fields':['question_text']}),
+		('Date Information', {'fields':['pub_date'], 'classes':['collapse']}),
+	]
+	inlines = [ChoiceInline]
+	list_display = ('question_text', 'pub_date', 'was_published_recently')
+	list_filter = ['pub_date'] #used for filters
+	search_fields = ['question_text'] #adds search box at top of change list
+
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(UserProfile)
+
+#Stream Demo
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('user', 'image', 'source_url', 'message')
+    list_editable = ('source_url', 'message')
+
+admin.site.register(pinterest_models.Item, ItemAdmin)
+
+auto_register(pinterest_models)
+
+from stream_django import feed_manager
+
+
+def user_feeds(request):
+    context = {}
+    if request.user.is_authenticated():
+        for feed in ['user', 'flat', 'aggregated', 'notification']:
+            context[feed + '_feed'] = feed_manager.get_feed(feed, request.user.id)
+        
+    return context
+
+
+def unseen_notifications(request):
+    context = {}
+    if request.user.is_authenticated():
+        feed = feed_manager.get_feed('notification', request.user.id)
+        context['unseen_notifications'] = feed.get().get('unseen', 0)
+        context['unread_notifications'] = feed.get().get('unread', 0)
+    return context

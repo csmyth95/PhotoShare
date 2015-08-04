@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Add a New Image to {{ category_name }}{% endblock %}
+
+{% block body_block %}
+    <div class="hero-unit">
+        <h1>Add an Image</h1>
+
+        <br/>
+
+        <div class="container">
+
+            {% if not category_name_url %}
+                <div style="color: red;">The specified Album does not exist!</div>
+            {% else %}
+                <form action="" method="post" enctype=multipart/form-data>
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <input type="submit" value="Upload!">
+
+                </form>
+
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
